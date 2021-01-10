@@ -1,32 +1,45 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="primary"
+      dark
+    >
+      <div class="d-flex align-center">
+
+
+        <h1>Azure B2C Sample</h1>
+      </div>
+
+      <v-spacer></v-spacer>
+<button v-if="!isAuthenticated" @click="signIn()">Sign In</button>
+
+        <button v-if="isAuthenticated" @click="signOut()">Sign Out</button>
+    </v-app-bar>
+
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import { Component, Vue, Prop } from "vue-property-decorator";
 
-#nav {
-  padding: 30px;
+@Component
+export default class App extends Vue {
+  @Prop() private msg!: string;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  public get isAuthenticated(): boolean {
+    return this.$msal.isAuthenticated;
+  }
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  public async signIn() {
+    await this.$msal.signIn();
+  }
+
+   public async signOut() {
+    await this.$msal.signOut();
   }
 }
-</style>
+</script>
