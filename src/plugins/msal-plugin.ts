@@ -37,7 +37,7 @@ export class MsalPlugin implements PluginObject<MsalPluginOptions> {
         this.pluginOptions = options;
         this.initialize(options);
         msalPluginInstance = this;
-        vue.prototype.$msal = msalPluginInstance;
+        vue.prototype.$msal = Vue.observable(msalPluginInstance);
     }
 
     private initialize(options: MsalPluginOptions) {
