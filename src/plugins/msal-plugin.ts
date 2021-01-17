@@ -74,7 +74,7 @@ export class MsalPlugin implements PluginObject<MsalPluginOptions> {
             }
         };
         msalInstance = new msal.PublicClientApplication(msalConfig);
-        this.isAuthenticated = this.geIsAuthenticated();
+        this.isAuthenticated = this.getIsAuthenticated();
     }
 
 
@@ -129,7 +129,7 @@ export class MsalPlugin implements PluginObject<MsalPluginOptions> {
         }
     }
 
-    private geIsAuthenticated(): boolean {
+    private getIsAuthenticated(): boolean {
         const accounts: msal.AccountInfo[] = msalInstance.getAllAccounts();
         return accounts && accounts.length > 0;
     }
