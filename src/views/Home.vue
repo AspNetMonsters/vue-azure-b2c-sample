@@ -36,10 +36,10 @@ import DaveCoApi from "../api/daveco-api";
 })
 export default class Home extends Vue {
 
-   public secretThing = '';
+   public secretThing: any[] = [];
    
-   getSecret() {
-     this.secretThing = DaveCoApi.getSuperSecretThings();
+   async getSecret() {
+     this.secretThing = await DaveCoApi.getSuperSecretThings();
   }
 }
 </script>

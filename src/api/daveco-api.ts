@@ -1,7 +1,18 @@
+import { msalPluginInstance } from "@/plugins/msal-plugin";
 
 class DaveCoApi {
-    getSuperSecretThings(): string {
-        return "These are the super secret things";
+    async getSuperSecretThings(): Promise<any[]> {
+        const accessToken = await msalPluginInstance.acquireToken();
+        const response = await fetch('/api/weatherforecast/', {
+            headers: {
+                authorization: `Bearer ${accessToken}`
+            }
+        });
+        if (response.ok){
+            return await response.json();
+        } else {
+            return [];
+        }
     }
 }
 

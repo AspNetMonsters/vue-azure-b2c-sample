@@ -81,7 +81,7 @@ export class MsalPlugin implements PluginObject<MsalPluginOptions> {
     public async signIn() {
         try {
             const loginRequest: msal.PopupRequest = {
-                scopes: ["openid", "profile", "offline_access"],
+                scopes: ["openid", "profile", "offline_access", "https://davecob2cc.onmicrosoft.com/bcc7d959-3458-4197-a109-26e64938a435/access_api"],
             };
             const loginResponse: msal.AuthenticationResult = await msalInstance.loginPopup(loginRequest);
             this.isAuthenticated = !!loginResponse.account;
@@ -91,7 +91,7 @@ export class MsalPlugin implements PluginObject<MsalPluginOptions> {
             if (err.errorMessage && err.errorMessage.indexOf("AADB2C90118") > -1) {
                 try {
                     const passwordResetResponse: msal.AuthenticationResult = await msalInstance.loginPopup({
-                        scopes: ["openid", "profile", "offline_access"],
+                        scopes: ["openid", "profile", "offline_access", "https://davecob2cc.onmicrosoft.com/bcc7d959-3458-4197-a109-26e64938a435/access_api"],
                         authority: this.pluginOptions.passwordAuthority
                     });
                      this.isAuthenticated = !!passwordResetResponse.account;
@@ -114,11 +114,12 @@ export class MsalPlugin implements PluginObject<MsalPluginOptions> {
         const request = {
             account: msalInstance.getAllAccounts()[0],
             // TODO: Add API scope here
-            scopes: ["openid", "profile", "offline_access"]
+            scopes: ["https://davecob2cc.onmicrosoft.com/bcc7d959-3458-4197-a109-26e64938a435/access_api"]
         };
         try {
             const response = await msalInstance.acquireTokenSilent(request);
-            return response.accessToken;
+            debugger;
+            return response.accessToken;            
         } catch (error) {
             if (error instanceof msal.InteractionRequiredAuthError) {
                 return msalInstance.acquireTokenPopup(request).catch((popupError) => {

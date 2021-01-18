@@ -12,7 +12,7 @@
       </div>
 
       <v-spacer></v-spacer>
-<button v-if="!isAuthenticated" @click="signIn()">Sign In</button>
+        <button v-if="!isAuthenticated" @click="signIn()">Sign In</button>
 
         <button v-if="isAuthenticated" @click="signOut()">Sign Out</button>
     </v-app-bar>
