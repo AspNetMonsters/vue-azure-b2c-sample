@@ -1,6 +1,11 @@
 # vue-azure-b2c-sample
 
-A sample Vue application that uses Azure B2C to authenticate users. Once users are authenticated, a acccess token is used to access the API that is exposed by an ASP.NET Core backend. See https://github.com/AspNetMonsters/aspnetcore-azure-b2c-sample for the backend implementation.
+A sample Vue application that uses Azure B2C to authenticate users. Once users are authenticated, a acccess token is used to access the API. 
+
+You can use 2 separate versions of the backend. 
+
+ASP.NET Core: https://github.com/AspNetMonsters/aspnetcore-azure-b2c-sample 
+Azure Functions: https://github.com/AspNetMonsters/functions-azure-b2c-sample
 
 
 ## Project setup
