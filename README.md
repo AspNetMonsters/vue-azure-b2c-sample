@@ -1,4 +1,4 @@
-# vue-azure-b2c-sample
+# Vue with Azure B2C
 
 A sample Vue application that uses Azure B2C to authenticate users. Once users are authenticated, a acccess token is used to access the API. 
 
