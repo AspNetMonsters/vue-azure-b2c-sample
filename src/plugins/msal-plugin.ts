@@ -113,12 +113,10 @@ export class MsalPlugin implements PluginObject<MsalPluginOptions> {
     public async acquireToken() {
         const request = {
             account: msalInstance.getAllAccounts()[0],
-            // TODO: Add API scope here
             scopes: ["https://davecob2cc.onmicrosoft.com/bcc7d959-3458-4197-a109-26e64938a435/access_api"]
         };
         try {
             const response = await msalInstance.acquireTokenSilent(request);
-            debugger;
             return response.accessToken;            
         } catch (error) {
             if (error instanceof msal.InteractionRequiredAuthError) {
