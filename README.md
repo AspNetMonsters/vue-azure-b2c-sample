@@ -4,8 +4,8 @@ A sample Vue application that uses Azure B2C to authenticate users. Once users a
 
 You can use 2 separate versions of the backend. 
 
-ASP.NET Core: https://github.com/AspNetMonsters/aspnetcore-azure-b2c-sample 
-Azure Functions: https://github.com/AspNetMonsters/functions-azure-b2c-sample
+- **ASP.NET Core:** https://github.com/AspNetMonsters/aspnetcore-azure-b2c-sample 
+- **Azure Functions:** https://github.com/AspNetMonsters/functions-azure-b2c-sample
 
 
 ## Project setup
